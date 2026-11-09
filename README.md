@@ -73,4 +73,31 @@ A comprehensive Exploratory Data Analysis was conducted to understand the underl
 </figure>
 
 
-## Next step: Baseline
+## Baseline Model
+To get things started, I built a quick and simple baseline model just to see where I stand.
+
+First, I used a TfidfVectorizer:  `TfidfVectorizer(max_features=15000, ngram_range=(1, 2))`.
+
+For the algorithm, I went with Ridge Regression. 
+
+The Post-processing Trick:
+Since the model doesn't know the actual rules of the Kaggle competition, it sometimes predicted confidence scores below 0 or above 1. It also didn't know that the scores for sentiment (s1-s5) and time (w1-w4) must sum up to 1. To fix this, I added a post-processing steps.
+
+The baseline model achived RMSE 0.16173 on kaggle leaderboard.
+
+
+
+## Results
+| Model | RMSE (Kaggle public leaderboard)|  
+| --- | --- |
+| Baseline: TD-IDF + Ridge | 0.16173 |
+
+## Repo Structure
+```bash
+Repository
+ ┣ figures
+ ┣ analysis_cleaning.ipynb      # data cleaning, EDA
+ ┣ baseline_model.ipynb         # TD-IDF + Ridge
+ ┣ README.md
+ ┗ variableNames.txt
+ ```
