@@ -85,12 +85,18 @@ Since the model doesn't know the actual rules of the Kaggle competition, it some
 
 The baseline model achived RMSE 0.16173 on kaggle leaderboard.
 
+## LightGBM with Feature Engineering
+
+Based on the EDA, I knew that the length of the tweet influenced the "I can't tell" sentiment class. So, I engineered a new numerical feature: word_count.
+
+Because LightGBM doesn't natively output 24 variables at once like Ridge does, I wrapped it in Scikit-learn's MultiOutputRegressor, which essentially trains 24 separate LightGBM models under the hood—one for each target.
 
 
 ## Results
 | Model | RMSE (Kaggle public leaderboard)|  
 | --- | --- |
 | Baseline: TD-IDF + Ridge | 0.16173 |
+| LightGBM | 0.15806 |
 
 ## Repo Structure
 ```bash
@@ -98,6 +104,7 @@ Repository
  ┣ figures
  ┣ analysis_cleaning.ipynb      # data cleaning, EDA
  ┣ baseline_model.ipynb         # TD-IDF + Ridge
+ ┣ LGBM_model
  ┣ README.md
  ┗ variableNames.txt
  ```
