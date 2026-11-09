@@ -93,7 +93,7 @@ Because LightGBM doesn't natively output 24 variables at once like Ridge does, I
 
 
 ## Deep Learning: RoBERTa
-While LightGBM provided a strong baseline, it eventually reached a performance ceiling. The primary limitation of TF-IDF is that it treats text as a "bag of words," ignoring word order, context, and nuances. To overcome this and significantly improve the score, I transitioned to Transformer models.
+While LightGBM provided a better result than Ridge, it eventually reached a performance ceiling. The primary limitation of TF-IDF is that it treats text as a "bag of words," ignoring word order, context, and nuances. To overcome this and significantly improve the score, I transitioned to Transformer models.
 
 I utilized Hugging Face's transformers library to fine-tune the cardiffnlp/twitter-roberta-base model. This specific architecture was chosen because it was pre-trained on millions of actual tweets, allowing it to effectively process Twitter-specific language.
 
@@ -110,7 +110,7 @@ After fine-tuning for a few epochs on a GPU and applying the previous post-proce
 | --- | --- |
 | Baseline: TD-IDF + Ridge | 0.16173 |
 | LightGBM | 0.15806 |
-| RoBERTa | 0.12441 |
+| RoBERTa | **0.12441** |
 
 
 ## Repo Structure
@@ -119,7 +119,8 @@ Repository
  ┣ figures
  ┣ analysis_cleaning.ipynb      # data cleaning, EDA
  ┣ baseline_model.ipynb         # TD-IDF + Ridge
- ┣ LGBM_model
+ ┣ LGBM_model.ipynb 
+ ┣ roberta_transformer.ipynb
  ┣ README.md
  ┗ variableNames.txt
  ```
