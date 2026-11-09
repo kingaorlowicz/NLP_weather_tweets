@@ -112,6 +112,11 @@ After fine-tuning for a few epochs on a GPU and applying the previous post-proce
 | LightGBM | 0.15806 |
 | RoBERTa | **0.12441** |
 
+## Conclusions
+Working through this NLP competition highlighted several key takeaways regarding modern machine learning pipelines:
+1. Context is King: The massive leap in performance from LightGBM to RoBERTa proves that treating text as a mere "bag of words" (TF-IDF) is insufficient for complex tasks like sentiment analysis. Transformers' ability to understand sentence structure, negation, and context is invaluable.
+2. Logic and Post-Processing win free points: Integrating domain knowledge-specifically the Kaggle competition rules regarding mutually exclusive targets summing to 1-into a simple post-processing step reliably improved the RMSE across all models. Ensuring model predictions align with real-world logic is just as important as hyperparameter tuning.
+
 
 ## Repo Structure
 ```bash
