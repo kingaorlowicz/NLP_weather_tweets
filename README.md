@@ -92,11 +92,26 @@ Based on the EDA, I knew that the length of the tweet influenced the "I can't te
 Because LightGBM doesn't natively output 24 variables at once like Ridge does, I wrapped it in Scikit-learn's MultiOutputRegressor, which essentially trains 24 separate LightGBM models under the hood—one for each target.
 
 
+## Deep Learning: RoBERTa
+While LightGBM provided a strong baseline, it eventually reached a performance ceiling. The primary limitation of TF-IDF is that it treats text as a "bag of words," ignoring word order, context, and nuances. To overcome this and significantly improve the score, I transitioned to Transformer models.
+
+I utilized Hugging Face's transformers library to fine-tune the cardiffnlp/twitter-roberta-base model. This specific architecture was chosen because it was pre-trained on millions of actual tweets, allowing it to effectively process Twitter-specific language.
+
+A few key changes for this approach:
+
+- Raw Data: I skiped the previous text cleaning steps.
+- Regression Head: I initialized the model with problem_type="regression". This automatically adds a linear layer on top of the RoBERTa architecture to output 24 continuous values, optimizing for MSE.
+- No Engineered Features: I removed the word_count feature.
+
+After fine-tuning for a few epochs on a GPU and applying the previous post-processing rules (normalizing the sentiment and time probabilities), the model achieved a substantial improvement in overall performance.
+
 ## Results
 | Model | RMSE (Kaggle public leaderboard)|  
 | --- | --- |
 | Baseline: TD-IDF + Ridge | 0.16173 |
 | LightGBM | 0.15806 |
+| RoBERTa | 0.12441 |
+
 
 ## Repo Structure
 ```bash
