@@ -6,7 +6,7 @@
 ![HuggingFace](https://img.shields.io/badge/huggingface-%23FFD21E.svg?style=for-the-badge&logo=huggingface&logoColor=white)
 
 ## Overview
-This repository contains a solution for the Kaggle competition "Partly Sunny with a Chance of Hashtags," hosted in partnership with CrowdFlower. The challenge revolves around analyzing a dataset of weather-related tweets to extract multiple layers of information from just a few characters. Technically, this is a Natural Language Processing  and Multi-Target Regression problem, as the objective is to predict continuous confidence scores for multiple classes simultaneously rather than assigning hard binary labels.
+This repository contains a solution for the [Kaggle competition "Partly Sunny with a Chance of Hashtags"](https://www.kaggle.com/competitions/crowdflower-weather-twitter), hosted in partnership with CrowdFlower. The challenge revolves around analyzing a dataset of weather-related tweets to extract multiple layers of information from just a few characters. Technically, this is a Natural Language Processing  and Multi-Target Regression problem, as the objective is to predict continuous confidence scores for multiple classes simultaneously rather than assigning hard binary labels.
 
 ## Goal
 The main objective is to analyze each tweet and predict the confidence score (ranging from 0 to 1) for 24 distinct labels. The evaluation metric for the competition is the Root Mean Squared Error (RMSE).
